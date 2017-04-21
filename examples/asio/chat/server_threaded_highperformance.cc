@@ -80,7 +80,7 @@ class ChatServer : noncopyable
         it != LocalConnections::instance().end();
         ++it)
     {
-      codec_.send(get_pointer(*it), message);
+      codec_.send(*it, message);
     }
     LOG_DEBUG << "end";
   }

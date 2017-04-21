@@ -8,7 +8,6 @@
 using std::placeholders::_1;
 using std::placeholders::_2;
 using std::placeholders::_3;
-using muduo::get_pointer;
 
 bool g_tcpNoDelay = false;
 int g_msgSize = 0;
@@ -24,7 +23,7 @@ void onConnection(LengthHeaderCodec* codec, const muduo::net::TcpConnectionPtr& 
     LOG_INFO << "connected";
     g_start = muduo::Timestamp::now();
     conn->setTcpNoDelay(g_tcpNoDelay);
-    codec->send(get_pointer(conn), g_message);
+    codec->send(conn, g_message);
   }
   else
   {
@@ -47,7 +46,7 @@ void onStringMessage(LengthHeaderCodec* codec,
 
   if (g_msgCount < g_totalMsgs)
   {
-    codec->send(get_pointer(conn), message);
+    codec->send(conn, message);
   }
   else
   {

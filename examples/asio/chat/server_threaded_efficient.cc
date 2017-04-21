@@ -72,7 +72,7 @@ class ChatServer : noncopyable
         it != connections->end();
         ++it)
     {
-      codec_.send(get_pointer(*it), message);
+      codec_.send(*it, message);
     }
   }
 

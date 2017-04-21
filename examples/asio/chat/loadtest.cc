@@ -94,7 +94,7 @@ class ChatClient : noncopyable
   void send()
   {
     g_startTime = Timestamp::now();
-    codec_.send(get_pointer(connection_), "hello");
+    codec_.send(connection_, "hello");
     LOG_DEBUG << "sent";
   }
 

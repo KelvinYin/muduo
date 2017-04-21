@@ -8,7 +8,6 @@
 using std::placeholders::_1;
 using std::placeholders::_2;
 using std::placeholders::_3;
-using muduo::get_pointer;
 
 bool g_tcpNoDelay = false;
 
@@ -25,7 +24,7 @@ void onStringMessage(LengthHeaderCodec* codec,
                      const muduo::string& message,
                      muduo::Timestamp)
 {
-  codec->send(get_pointer(conn), message);
+  codec->send(conn, message);
 }
 
 int main(int argc, char* argv[])

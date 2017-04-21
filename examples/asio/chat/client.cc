@@ -40,7 +40,7 @@ class ChatClient : noncopyable
     MutexLockGuard lock(mutex_);
     if (connection_)
     {
-      codec_.send(get_pointer(connection_), message);
+      codec_.send(connection_, message);
     }
   }
 
